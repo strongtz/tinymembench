@@ -59,6 +59,10 @@ void aligned_block_copy_pf64(int64_t * __restrict dst,
                              int64_t * __restrict src,
                              int                  size);
 
+void aligned_block_fetch(int64_t * __restrict dst,
+                         int64_t * __restrict src,
+                         int                  size);
+
 void aligned_block_fill(int64_t * __restrict dst,
                         int64_t * __restrict src,
                         int                  size);

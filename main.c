@@ -372,6 +372,7 @@ static bench_info c_benchmarks[] =
     { "C scan 16", 0, aligned_block_scan_16, memscan_setup, memscan_reset },
     { "C scan 32", 0, aligned_block_scan_32, memscan_setup, memscan_reset },
     { "C scan 64", 0, aligned_block_scan_64 , memscan_setup, memscan_reset},
+    { "C fetch", 0, aligned_block_fetch },
     { "C fill", 0, aligned_block_fill },
     { "C fill (shuffle within 16 byte blocks)", 0, aligned_block_fill_shuffle16 },
     { "C fill (shuffle within 32 byte blocks)", 0, aligned_block_fill_shuffle32 },
