@@ -11,7 +11,7 @@ LATBENCH_COUNT ?= 10000000
 MEM_REALLOC ?= 0
 
 tinymembench: main.c util.o util.h asm-opt.h version.h asm-opt.o x86-sse2.o arm-neon.o mips-32.o aarch64-asm.o
-	${CC} -O2 ${CFLAGS} "-DCFLAGS=\"${CFLAGS}\"" \
+	${CC} -O2 ${CFLAGS} ${LDFLAGS} "-DCFLAGS=\"${CFLAGS}\"" \
 		-DMINREPEATS=${MINREPEATS} \
 		-DMAXREPEATS=${MAXREPEATS} \
 		-DLATBENCH_REPEATS=${LATBENCH_REPEATS} \
