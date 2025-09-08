@@ -711,6 +711,16 @@ int main(int argc, char *argv[])
     fbsize = (fbsize / BLOCKSIZE) * BLOCKSIZE;
 #endif
 
+    if (argc > 1 && argv[1][0] != '-') {
+        threads = atoi(argv[1]);
+        for (int i = 1; i < argc - 1; i++) {
+            argv[i] = argv[i+1];
+        }
+        argc--;
+    } else {
+        threads = 1;
+    }
+
     parse_args(argc, argv, &minrepeats, &maxrepeats, &mem_realloc,
                &latbench_repeats, &latbench_count);
     if (minrepeats > maxrepeats) {
@@ -726,9 +736,8 @@ int main(int argc, char *argv[])
     printf("      latency test repeats (-l): %d\n", latbench_repeats);
     printf("        latency test count (-c): %d\n", latbench_count);
 
-    if (argc == 1)
+    if (threads == 1)
     {
-        threads = 1;
         printf("Single thread test\n");
     }
     else
@@ -736,7 +745,6 @@ int main(int argc, char *argv[])
         int total_cpu;
 
         total_cpu = sysconf(_SC_NPROCESSORS_ONLN);
-        threads = atoi(argv[1]);
         printf("%d threads on %d CPU\n", threads, total_cpu);
     }
 
