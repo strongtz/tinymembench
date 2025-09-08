@@ -7,10 +7,10 @@ ifdef WINDIR
 	CC = gcc
 endif
 
-MINREPEATS ?= 3
-MAXREPEATS ?= 10
-LATBENCH_REPEATS ?= 10
-LATBENCH_COUNT ?= 10000000
+MINREPEATS ?= 2
+MAXREPEATS ?= 3
+LATBENCH_REPEATS ?= 3
+LATBENCH_COUNT ?= 1000000
 MEM_REALLOC ?= 0
 
 tinymembench: main.c util.o util.h asm-opt.h version.h asm-opt.o x86-sse2.o arm-neon.o mips-32.o aarch64-asm.o

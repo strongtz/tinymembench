@@ -711,14 +711,24 @@ int main(int argc, char *argv[])
     fbsize = (fbsize / BLOCKSIZE) * BLOCKSIZE;
 #endif
 
-    if (argc > 1 && argv[1][0] != '-') {
-        threads = atoi(argv[1]);
-        for (int i = 1; i < argc - 1; i++) {
-            argv[i] = argv[i+1];
+    if (argc == 1)
+    {
+        threads = sysconf(_SC_NPROCESSORS_ONLN);
+    }
+    else
+    {
+        if (argv[1][0] != '-' && atoi(argv[1]) > 0)
+        {
+            threads = atoi(argv[1]);
+            for (int i = 1; i < argc - 1; i++) {
+                argv[i] = argv[i+1];
+            }
+            argc--;
         }
-        argc--;
-    } else {
-        threads = 1;
+        else
+        {
+            threads = 1;
+        }
     }
 
     parse_args(argc, argv, &minrepeats, &maxrepeats, &mem_realloc,
