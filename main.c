@@ -159,7 +159,7 @@ static void parallel_init(int threads)
 
     for (i = 0; i < threads; ++i)
     {
-#if 1
+#if 0
         CPU_ZERO(&cpus);
         CPU_SET(i, &cpus);
         pthread_attr_setaffinity_np(&attr, sizeof(cpu_set_t), &cpus);
